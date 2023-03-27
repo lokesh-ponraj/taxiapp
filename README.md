@@ -1,5 +1,4 @@
 # TAXIAPP 
-[![Django CI](https://github.com/lokesh-ponraj/taxiapp/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/lokesh-ponraj/taxiapp/actions/workflows/django.yml)  [![Docker](https://github.com/lokesh-ponraj/taxiapp/actions/workflows/docker-publish.yml/badge.svg?branch=master)](https://github.com/lokesh-ponraj/taxiapp/actions/workflows/docker-publish.yml)  
 
 Taxi Booking App
 
