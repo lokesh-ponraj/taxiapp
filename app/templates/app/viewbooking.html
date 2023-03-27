@@ -1,0 +1,84 @@
+{% extends 'app/template.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Booking no: {{single_booking.id}} | TAXI APP</title>
+{% endblock %}
+
+{% block heronav %}
+
+
+<!-- ********************* THIS IS FOR USERS TO SEE THEIR BOOKINGS ********************** -->
+<nav class="navbar bg-body-tertiary p-3">
+    <div class="container-xl">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            TAXI APP
+        </a>
+        
+            <ul class="navbar-nav d-flex flex-row gap-2 ms-2 me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'makeBooking' %}">Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-success fw-semibold" href="{% url 'mybookings' %}">My Bookings</a>
+                </li>
+            </ul>
+        
+
+
+        <div class="row">
+            <div class="col d-flex justify-content-end align-items-center">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">
+                            <img class="rounded-circle me-1" width="24" height="24" src="{% static 'img/avatars/avatar1.jpeg' %}" alt="">{{user.username}}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    <div class="col">
+        <h3 class="text-dark mb-4">Bookings</h3>
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Booking number: {{single_booking.id}}</p>
+            </div>
+            <div class="card">
+                <h5 class="card-header">Booking</h5>
+                <div class="card-body">
+                    
+                  <h5 class="card-title">LOCATION: {{single_booking.location}}</h5>
+                  <p class="card-text">ORIGIN: {{single_booking.origin}}</p>
+                  <p class="card-text">DESTINATION: {{single_booking.destination}}</p>
+                  <p class="card-text">PICK-UP TIME: {{single_booking.pickup}}</p>
+                  <p class="card-text">PHONE: {{single_booking.phone}}</p>
+                  <div>
+                    <a href="#" ><button class="btn btn-danger" type="submit">DELETE</button></a>
+                  </div>
+                  
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

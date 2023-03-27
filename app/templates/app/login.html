@@ -1,0 +1,66 @@
+{% extends 'app/template.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Bookings | TAXI APP</title>
+{% endblock %}
+
+{% block heronav %}
+<nav class="navbar bg-body-tertiary p-3">
+    <div class="container-xl">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            TAXI APP
+        </a>
+
+    </div>
+</nav>
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5 bgimg">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3"><span class="text-success">Your ride, your way<br></span><span class="fs-1">book with us today!</span></h1>
+        <p class="col-lg-10 fs-4 text-muted">Our taxi booking app gives you the flexibility to choose the ride that suits your needs, whether you need a quick ride to the airport or a luxurious car for a special occasion.</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+      
+        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" method="post">
+            {% csrf_token %}
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required>
+            <label for="floatingInput">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+          
+          <hr class="my-3">
+          <a href="{% url 'register' %}" class="w-100 btn btn-lg btn-outline-secondary mb-2">Register Now</a>
+          <a href="{% url 'driverLogin' %}" class="w-100 btn btn-lg btn-success">Login / Register as Driver</a>
+          <small class="text-body-secondary mt-2">By clicking Register, you agree to the terms of use.</small>
+        </form>
+        {% for message in messages %}
+        <!-- Error message section -->
+        <div class="form-group mt-2">
+          <div class="alert alert-danger alert-dismissible fade show text-center" role="alert" id="myAlert">
+              <strong>Error:</strong>{{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closeBtn">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+         </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

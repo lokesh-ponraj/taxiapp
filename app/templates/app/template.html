@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}" >
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+</head>
+<body>
+  {% block heronav %}
+    <nav class="navbar bg-body-tertiary p-3">
+        <div class="container">
+          <a class="navbar-brand" href="">
+            TAXI APP
+          </a>
+          <div class="row">
+            <div class="col d-flex justify-content-end align-items-center">
+                <div class="dropdown text-end">
+                  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
+                      <img class="rounded-circle me-1" width="24" height="24" src="{% static 'img/avatars/avatar1.jpeg' %}" alt="">Primary
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+  {% endblock %}
+
+
+      {% block navbar %}
+
+      {% endblock %}
+
+
+      {% block content %}
+
+      {% endblock %}
+
+
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://kit.fontawesome.com/b59fc43d0f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js" ></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#mytable').DataTable();
+      });
+    </script>
+
+
+<script>
+  $(document).ready(function() {
+    // Close the alert box when the button is clicked
+    $("#closeBtn").click(function() {
+      $("#myAlert").alert('close');
+    });
+  });
+</script>
+  
+
+</body>
+</html>

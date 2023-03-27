@@ -1,0 +1,96 @@
+{% extends 'app/template.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Bookings | TAXI APP</title>
+{% endblock %}
+
+{% block heronav %}
+
+
+<!-- ********************* THIS IS FOR DRIVERS ********************** -->
+<nav class="navbar bg-body-tertiary p-3">
+    <div class="container-xl">
+        <a class="navbar-brand" href="{% url 'bookings' %}">
+            TAXI APP
+        </a>
+        
+            <ul class="navbar-nav d-flex flex-row gap-2 ms-2 me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'bookings' %}">Bookings</a>
+                </li>
+            </ul>
+        
+
+
+        <div class="row">
+            <div class="col d-flex justify-content-end align-items-center">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
+                            <img class="rounded-circle me-1" width="24" height="24" src="{% static 'img/avatars/avatar1.jpeg' %}" alt="">{{user.username}}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    <div class="col">
+        <h3 class="text-dark mb-4">Bookings</h3>
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">My Bookings</p>
+            </div>
+            <div class="card-body">
+
+
+                <table class="table table-striped table-bordered" id="mytable" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Current Location</th>
+                            <th>Time</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% for book in books %}
+                        <tr style="padding: 5px;">
+                            <td>{{book.origin}}</td>
+                            <td>{{book.destination}}</td>
+                            <td>{{book.location}}</td>
+                            <td>{{book.time}}</td>
+                            <td>{{book.phone}}</td>
+                            <td><a href="{% url 'driverbookingview' book.id %}"><button class="btn btn-primary">View</button></a></td>
+                        </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

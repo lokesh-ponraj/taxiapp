@@ -1,0 +1,94 @@
+{% extends 'app/template.html' %}
+{% load static %}
+
+{% block head %}
+<title>Home | TAXI APP</title>
+{% endblock %}
+
+{% block heronav %}
+
+<nav class="navbar bg-body-tertiary p-3">
+    <div class="container-xl">
+        <a class="navbar-brand" href="{% url 'makeBooking' %}">
+            TAXI APP
+        </a>
+
+        <ul class="navbar-nav d-flex flex-row gap-2 ms-2 me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active text-success fw-semibold" aria-current="page" href="{% url 'home' %}">Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'mybookings' %}">My Bookings</a>
+            </li>
+        </ul>
+    
+        <div class="row">
+            <div class="col d-flex justify-content-end align-items-center">
+                <div class="dropdown text-end">
+                  <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">
+                        <img class="rounded-circle me-1" width="24" height="24" src="{% static 'img/avatars/avatar1.jpeg' %}" alt="">{{user.username}}
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</nav>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container bg-light">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="h-100 p-5 bg-light rounded-3">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-center mt-3 mb-3">
+                        <div class="card shadow-lg" style="width: 450px;">
+                            <h5 class="card-header text-center">Book a Ride</h5>
+                            <div class="card-body">
+                                <div class="form-floating">
+                                    <input class="form-control mt-2 mb-3" type="text" placeholder="Origin from *"
+                                        name="from" id="from" required>
+                                    <label for="from">Origin from *</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control mt-2 mb-3" type="text" placeholder="Destination to *"
+                                        name="to" id="to" required>
+                                    <label for="to">Destination to *</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control mt-2 mb-3" type="text" placeholder="Current location *"
+                                        name="location" id="location" required>
+                                    <label for="location">Current location *</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control mt-2 mb-3" type="time" placeholder="Pickup time" name="time" id="time" required>
+                                    <label for="time">Pick up time *</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control mt-2 mb-3" type="tel" placeholder="Phone number *"
+                                        name="phone" id="phone" required>
+                                    <label for="phone">Phone number *</label>
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <button class="btn btn-primary d-block w-100" type="submit">BOOK NOW</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
