@@ -1,0 +1,22 @@
+{
+  "name": "taxi-app",
+  "version": "1.0.0",
+  "description": "Taxi Booking App",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokesh-ponraj/taxiapp.git"
+  },
+  "keywords": [
+    "taxiapp"
+  ],
+  "author": "Lokesh Ponraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lokesh-ponraj/taxiapp/issues"
+  },
+  "homepage": "https://github.com/lokesh-ponraj/taxiapp#readme"
+}
